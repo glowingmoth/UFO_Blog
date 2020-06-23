@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Blog.delete_all
+
+for i in 1..10 do
+    blog = Blog.new(title: Faker::Lorem.sentence(word_count: 3), 
+                    body: Faker::Lorem.sentence(word_count: 60),
+                    like: 0, 
+                    dislike: 0)
+    blog.save
+end
