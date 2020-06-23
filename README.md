@@ -1,24 +1,20 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Project name: UFO Blog
 
-Things you may want to cover:
+1. sign up, name (first, last, gender, username, email) avatar = Gravatar, login
 
-* Ruby version
+2. post to a blog, other users can comment on the blog post
 
-* System dependencies
+3. image upload for blogger
 
-* Configuration
+4. users can click like or dislike on the blog post
 
-* Database creation
+5. list all blogs to everyone who visits homepage (you can only post or comment if you're logged in)
 
-* Database initialization
+6. send the user an email if they have a comment or like/dislike
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
 
-* ...
+Note to self: Start using Trello
