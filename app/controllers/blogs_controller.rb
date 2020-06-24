@@ -5,15 +5,20 @@ class BlogsController < ApplicationController
   end
 
   def show
+    @blog = Blog.find_by(id: params[:id])
   end
 
   def new
+    @blog = Blog.new
   end
 
   def edit
   end
 
   def create
+    @blog = Blog.new(params.require(:blog).permit(:title, :body))
+    @blog.save
+    redirect_to @blog
   end
 
   def update
@@ -23,3 +28,4 @@ class BlogsController < ApplicationController
   end
 
 end
+

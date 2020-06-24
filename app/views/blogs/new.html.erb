@@ -1,2 +1,10 @@
-<h1>Blogs#new</h1>
-<p>Find me in app/views/blogs/new.html.erb</p>
+<h1>Create a new blog post</h1>
+
+<%= form_with(model: @blog, local: true) do |form| %>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+
+    <%= form.label :body %>
+    <%= form.text_area :body %>
+    <%= form.submit %>
+<% end %>
