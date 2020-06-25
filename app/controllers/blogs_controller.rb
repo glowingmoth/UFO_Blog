@@ -13,6 +13,7 @@ class BlogsController < ApplicationController
   end
 
   def edit
+    @blog = Blog.find_by(id: params[:id]) 
   end
 
   def create
@@ -22,6 +23,9 @@ class BlogsController < ApplicationController
   end
 
   def update
+    @blog = Blog.find_by(id: params[:id])
+    @blog.update(params.require(:blog).permit(:title, :body))
+    redirect_to blogs_path
   end
 
   def destroy

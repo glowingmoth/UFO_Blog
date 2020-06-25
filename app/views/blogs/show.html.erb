@@ -1,14 +1,15 @@
-<h1>Blogs#show</h1>
-
-<div class="container ">   
-        <div class="card mb-3 mx-auto" style="width: 50rem;">
-            <div class="card-body">
-                <h5 class="card-title text-primary"><%= @blog.title %></h5>
-                <h6 class="card-subtitle mb-2 text-muted"></h6> <%# Change this later to user that posted %>
-                <p class="card-text"><%= @blog.body %></p> <%# Truncates the body of the post to specified characters%>
-                <%= link_to "Edit Post", blog_edit_path(@blog), class: "card-text" %>
-            </div>
-        </div>  
+<div class="container ">  
+    <h1 class="text-center">Show post</h1> 
+    <div class="card mb-3 mx-auto" style="width: 50rem;">
+        <div class="card-body">
+            <h5 class="card-title text-primary"><%= @blog.title %></h5>
+            <h6 class="card-subtitle mb-2 text-muted"></h6> <%# Change this later to user that posted %>
+            <p class="card-text"><%= @blog.body %></p> <%# Truncates the body of the post to specified characters%>
+            <p class="text-right mb-n1">
+                <%= link_to "Edit Post", blog_edit_path(@blog) %>
+            </p>
+        </div>
+    </div>  
 </div>
 
 
