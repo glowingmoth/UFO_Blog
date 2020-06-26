@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'comments/create'
+  get 'comments/new'
+  get 'comments/update'
+  get 'comments/destroy'
   get 'blogs', to: "blogs#index", as: "blogs"
   get 'blogs/new', to: "blogs#new", as: "blog_new"
   get 'blogs/:id/edit', to: "blogs#edit", as: "blog_edit" 
@@ -9,5 +13,9 @@ Rails.application.routes.draw do
   patch 'blogs/:id', to: "blogs#update"
 
   root "blogs#index"
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  
+  resources :blogs do
+    resources :comments
+  end
+  
 end
