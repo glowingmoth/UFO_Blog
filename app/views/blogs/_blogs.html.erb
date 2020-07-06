@@ -1,0 +1,19 @@
+<h1 class="text-center"><%= title %></h1> 
+
+<div class="container">
+    <%= link_to "Create New Post", blog_new_path %>
+</div>
+
+<div class="container ">
+    <% blogs.each do |blog| %>
+        <div class="card mb-3 mx-auto" style="width: 100%;">
+            <div class="card-body">
+                <%= link_to blog_path(blog) do %> <%# To enter the blog %>
+                    <h5 class="card-title text-primary"><%= blog.title %></h5>
+                    <h6 class="card-subtitle mb-2 text-muted"></h6> <%# Change this later to user that posted %>
+                    <p class="card-text"><%= truncate blog.body, length: 100 %></p> <%# Truncates the body of the post to specified characters%>
+                <% end %>
+            </div>
+        </div>
+    <% end %>
+</div>

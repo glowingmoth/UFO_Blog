@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
-  
+  before_action :authenticate_user!, only: [:myblogs]
+
   def index
     @blogs = Blog.all.order("created_at DESC")
   end
@@ -34,12 +35,11 @@ class BlogsController < ApplicationController
     @blog = Blog.find_by(id: params[:id])
     @blog.destroy
     redirect_to @blog
-  end
+  end 
 
+  def myblogs
+    @blogs = current_user.blogs
+  end
+  
 end
 
-def myblogs
-  if user_signed_in?
-    @blogs = Blog.where(user_id: current_user.id)
-  end
-end
