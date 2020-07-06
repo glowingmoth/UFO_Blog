@@ -19,6 +19,7 @@ class BlogsController < ApplicationController
 
   def create
     @blog = Blog.new(params.require(:blog).permit(:title, :body))
+    @blog.user_id = current_user.id
     @blog.save
     redirect_to blogs_path
   end
@@ -37,3 +38,8 @@ class BlogsController < ApplicationController
 
 end
 
+def myblogs
+  if user_signed_in?
+    @blogs = Blog.where(user_id: current_user.id)
+  end
+end

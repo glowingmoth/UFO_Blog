@@ -7,7 +7,7 @@
 
 <div class="container ">
     <% @blogs.each do |blog| %>
-        <div class="card mb-3 mx-auto" style="width: 50rem;">
+        <div class="card mb-3 mx-auto" style="width: 100%;">
             <div class="card-body">
                 <%= link_to blog_path(blog) do %> <%# To enter the blog %>
                     <h5 class="card-title text-primary"><%= blog.title %></h5>
