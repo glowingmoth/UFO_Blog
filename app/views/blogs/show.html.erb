@@ -5,11 +5,13 @@
             <h5 class="card-title text-primary"><%= @blog.title %></h5>
             <h6 class="card-subtitle mb-2 text-muted"><%= @blog.user.email %></h6> <%# Change this later to user that posted %>
             <p class="card-text"><%= @blog.body %></p> <%# Truncates the body of the post to specified characters%>
-            <p class="text-right mb-n1">
-                <%= link_to "Edit Post", blog_edit_path(@blog) %>
-                <%= "|"%>
-                <%= link_to "Delete Post", blog_path(@blog), method: :delete, data: { confirm: "Are you sure?" } %>
-            </p>
+            <% if user_signed_in? && @blog.user.id == current_user.id %>
+                <p class="text-right mb-n1">
+                    <%= link_to "Edit Post", blog_edit_path(@blog) %>
+                    <%= "|"%>
+                    <%= link_to "Delete Post", blog_path(@blog), method: :delete, data: { confirm: "Are you sure?" } %>
+                </p>
+            <% end %>
         </div>
     </div>
     <%= form_with(model: [@blog, @blog.comments.build], local: true) do |form| %>
@@ -18,18 +20,26 @@
             <%= form.text_area :body, class: "form-control" %>    
         </div>
         <div class="form-group action">
-            <%= form.submit "Submit", class: "btn btn-primary form-control" %>
+            <% if user_signed_in? %>
+                <%= form.submit "Add Comment", class: "btn btn-primary" %>
+            <% else %>
+                <%= link_to "Add Comment", new_user_session_path, class: "btn btn-primary" %>
+            <% end %>
         </div>
     <% end %>
     <% @comments.each do |comment|%>
         <% if comment.id %>
-            <p><%= comment.user.email %></p>
-            <p>
-                <%= comment.body %>
-                <% if current_user.id == comment.user_id %>
-                    <%= link_to "Delete Comment", [@blog, comment], method: :delete, data: { confirm: "Are you sure?" } %>
-                <% end %>
-            </p>
+            <div class="card mb-0 mx-auto border-0" style="width: 100%;">
+                <div class="card-body">
+                    <h6 class="card-subtitle mb-2 text-muted"><%= comment.user.email %></h6> 
+                    <p class="card-text"><%= comment.body %></p> <%# Truncates the body of the post to specified characters%>
+                    <% if user_signed_in? && current_user.id == comment.user_id %>
+                        <p>
+                            <%= link_to "Delete", [@blog, comment], method: :delete, data: { confirm: "Are you sure?" } %>
+                        </p>
+                    <% end %>
+                </div>
+            </div>
         <% end %>
     <% end %>     
 </div>
