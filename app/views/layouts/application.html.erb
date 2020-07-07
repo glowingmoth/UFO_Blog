@@ -16,6 +16,14 @@
 
   <body>
     <%= render "shared/navbar" %>
-    <%= yield %>
+    <% if controller_name == "confirmations" || controller_name == "passwords" || 
+        controller_name == "registrations" || controller_name == "sessions" || 
+        controller_name == "unlocks" %>
+      <div class="container">
+        <%= yield %>
+      </div>
+    <% else %>
+      <%= yield %>
+    <% end %> 
   </body>
 </html>
