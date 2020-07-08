@@ -1,4 +1,13 @@
 <%= form_with(model: blog, local: true) do |form| %>
+    <% if blog.errors.any? %>
+        <ul>
+            <% blog.errors.full_messages.each do |msg| %>
+                <li class="text-danger">
+                    <%= msg  %>
+                </li>
+            <% end %>
+        </ul>
+    <% end %>
     <div class="form-group field">
         <%= form.label :title %>
         <%= form.text_field :title, class: "form-control", value: "#{blog.title}" %>

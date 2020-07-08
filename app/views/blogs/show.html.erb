@@ -14,7 +14,16 @@
             <% end %>
         </div>
     </div>
-    <%= form_with(model: [@blog, @blog.comments.build], local: true) do |form| %>
+    <%= form_with(model: [@blog, @new_comment], local: true) do |form| %>
+        <% if @new_comment.errors.any? %>
+            <ul>
+                <% @new_comment.errors.full_messages.each do |msg| %>
+                    <li class="text-danger">
+                        <%= msg  %>
+                    </li>
+                <% end %>
+            </ul>
+        <% end %>
         <div class="form-group field">
             <%= form.label :body, "Comment" %>
             <%= form.text_area :body, class: "form-control" %>    

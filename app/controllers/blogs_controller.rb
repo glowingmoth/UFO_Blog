@@ -8,6 +8,7 @@ class BlogsController < ApplicationController
   def show
     @blog = Blog.find_by(id: params[:id])
     @comments = @blog.comments
+    @new_comment = @blog.comments.build
   end
 
   def new
@@ -21,8 +22,11 @@ class BlogsController < ApplicationController
   def create
     @blog = Blog.new(params.require(:blog).permit(:title, :body))
     @blog.user_id = current_user.id
-    @blog.save
-    redirect_to blogs_path
+    if @blog.save
+      redirect_to blogs_path
+    else
+      render :new
+    end
   end
 
   def update
