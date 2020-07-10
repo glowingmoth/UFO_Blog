@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'comments/update'
   get 'comments/destroy'
   get 'blogs/myblogs'
+  get 'blogs/members'
   get 'blogs', to: "blogs#index", as: "blogs"
   get 'blogs/new', to: "blogs#new", as: "blog_new"
   get 'blogs/:id/edit', to: "blogs#edit", as: "blog_edit" 

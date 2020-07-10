@@ -22,6 +22,7 @@ class BlogsController < ApplicationController
   def create
     @blog = Blog.new(params.require(:blog).permit(:title, :body))
     @blog.user_id = current_user.id
+    @blog.photo.attach(params[:blog][:photo])
     if @blog.save
       redirect_to blogs_path
     else

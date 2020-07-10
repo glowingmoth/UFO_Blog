@@ -16,6 +16,10 @@
         <%= form.label :body %>
         <%= form.text_area :body, class: "form-control", value: "#{blog.body}" %>    
     </div>
+    <div class="form-group field">
+        <%= form.label :photo %>
+        <%= form.file_field :photo %>    
+    </div>
     <div class="form-group action">
         <%= form.submit "Submit", class: "btn btn-primary" %>
     </div>

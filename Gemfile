@@ -58,3 +58,5 @@ gem 'faker'
 gem 'devise' 
 
 gem 'simple_form'
+
+gem 'cloudinary'
