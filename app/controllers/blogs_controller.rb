@@ -43,7 +43,7 @@ class BlogsController < ApplicationController
   end 
 
   def myblogs
-    @blogs = current_user.blogs
+    @blogs = current_user.blogs.all.order("created_at DESC")
   end
   
 end

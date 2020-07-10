@@ -7,11 +7,16 @@
         <%= link_to blog_path(blog) do %> <%# To enter the blog %>
             <div class="card mb-3 mx-auto" style="width: 100%;">
                 <div class="card-body">
-                    <h5 class="card-title text-primary"><%= blog.title %></h5>
+                    <h5 class="card-title text-primary"><%= blog.title %></h5> 
                     <span>
                     <%= image_tag("https://api.adorable.io/avatars/40/#{blog.user.email}.png", style: "width: 20px" )%>
                     </span>
                     <span class="text-muted"><%= blog.user.email %></span>
+                    <span class="float-right">
+                    <% if blog.photo.attached? %>
+                        <%= image_tag blog.photo, width: 100 %>
+                    <% end %>
+                    </span>
                     <h6 class="card-subtitle mb-2 text-muted"></h6> <%# Change this later to user that posted %>
                     <p class="card-text" style="color:black;"><%= truncate blog.body, length: 100 %></p> <%# Truncates the body of the post to specified characters%>
                 </div>

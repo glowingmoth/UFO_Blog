@@ -1,6 +1,6 @@
 <div class="container ">  
     <h1 class="text-center">Show post</h1> 
-    <div class="card mb-3 mx-auto" style="width: 100%;">
+    <div class="card mb-3 mx-auto border-0" style="width: 100%;">
         <div class="card-body">
             <h5 class="card-title text-primary"><%= @blog.title %></h5>
             <h6 class="card-subtitle mb-2 text-muted"><%= @blog.user.email %></h6> <%# Change this later to user that posted %>
@@ -17,7 +17,7 @@
             <% end %>
         </div>
     </div>
-    <%= form_with(model: [@blog, @new_comment], local: true) do |form| %>
+    <%= form_with(model: [@blog, @new_comment], class: "px-5", local: true) do |form| %>
         <div class="form-group field">
             <%= form.label :body, "Comment" %>
             <%= form.text_area :body, class: "form-control" %>    
